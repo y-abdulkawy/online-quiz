@@ -58,11 +58,14 @@
 let allQuestions=[],selectedQuestions=[],current=0,answers={},timerInterval;
 
 async function loadQuestions(){
-const res=await fetch("questions.json");
-allQuestions=await res.json();
-const units=[...new Set(allQuestions.map(q=>q.Unit))];
-document.getElementById('units').innerHTML=units.map(u=>`<label><input type="checkbox" value="${u}"> ${u}</label>`).join("<br>");
+  const res = await fetch("questions.json");
+  const data = await res.json();
+  allQuestions = data.QBank; // ✅ استخدمي QBank
+  const units = [...new Set(allQuestions.map(q => q.Unit))];
+  document.getElementById('units').innerHTML =
+    units.map(u => `<label><input type="checkbox" value="${u}"> ${u}</label>`).join("<br>");
 }
+
 loadQuestions();
 
 function showStep(n){
