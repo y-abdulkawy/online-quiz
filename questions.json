@@ -1,0 +1,303 @@
+{
+  "QBank": [
+    // ================= Unit1 Part1 =================
+    {
+      "ID": 1,
+      "Unit": "Unit1",
+      "Part": "Part1",
+      "Type": "TF",
+      "Question": "The sky is blue.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 2,
+      "Unit": "Unit1",
+      "Part": "Part1",
+      "Type": "TF",
+      "Question": "Water boils at 100°C.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 3,
+      "Unit": "Unit1",
+      "Part": "Part1",
+      "Type": "MCQ",
+      "Question": "2 + 2 = ?",
+      "Option1": "3",
+      "Option2": "4",
+      "Option3": "5",
+      "Option4": "6",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 4,
+      "Unit": "Unit1",
+      "Part": "Part1",
+      "Type": "MCQ",
+      "Question": "Capital of France?",
+      "Option1": "Paris",
+      "Option2": "London",
+      "Option3": "Berlin",
+      "Option4": "Rome",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+
+    // ================= Unit1 Part2 =================
+    {
+      "ID": 5,
+      "Unit": "Unit1",
+      "Part": "Part2",
+      "Type": "TF",
+      "Question": "Sound cannot travel in vacuum.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 6,
+      "Unit": "Unit1",
+      "Part": "Part2",
+      "Type": "TF",
+      "Question": "The Earth is flat.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 7,
+      "Unit": "Unit1",
+      "Part": "Part2",
+      "Type": "MCQ",
+      "Question": "Which planet is closest to the Sun?",
+      "Option1": "Earth",
+      "Option2": "Venus",
+      "Option3": "Mercury",
+      "Option4": "Mars",
+      "CorrectAnswer": 3,
+      "Score": 1
+    },
+    {
+      "ID": 8,
+      "Unit": "Unit1",
+      "Part": "Part2",
+      "Type": "MCQ",
+      "Question": "Largest ocean on Earth?",
+      "Option1": "Atlantic",
+      "Option2": "Indian",
+      "Option3": "Arctic",
+      "Option4": "Pacific",
+      "CorrectAnswer": 4,
+      "Score": 1
+    },
+
+    // ================= Unit2 Part1 =================
+    {
+      "ID": 9,
+      "Unit": "Unit2",
+      "Part": "Part1",
+      "Type": "TF",
+      "Question": "The Sun rises in the east.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 10,
+      "Unit": "Unit2",
+      "Part": "Part1",
+      "Type": "TF",
+      "Question": "Lightning never strikes the same place twice.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 11,
+      "Unit": "Unit2",
+      "Part": "Part1",
+      "Type": "MCQ",
+      "Question": "Which gas do humans breathe in?",
+      "Option1": "Oxygen",
+      "Option2": "Nitrogen",
+      "Option3": "Carbon Dioxide",
+      "Option4": "Hydrogen",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 12,
+      "Unit": "Unit2",
+      "Part": "Part1",
+      "Type": "MCQ",
+      "Question": "Which planet is known as the Red Planet?",
+      "Option1": "Earth",
+      "Option2": "Mars",
+      "Option3": "Jupiter",
+      "Option4": "Venus",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+
+    // ================= Unit2 Part2 =================
+    {
+      "ID": 13,
+      "Unit": "Unit2",
+      "Part": "Part2",
+      "Type": "TF",
+      "Question": "Water freezes at 0°C.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 14,
+      "Unit": "Unit2",
+      "Part": "Part2",
+      "Type": "TF",
+      "Question": "The Moon produces its own light.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 15,
+      "Unit": "Unit2",
+      "Part": "Part2",
+      "Type": "MCQ",
+      "Question": "Which element has the chemical symbol H?",
+      "Option1": "Helium",
+      "Option2": "Hydrogen",
+      "Option3": "Oxygen",
+      "Option4": "Nitrogen",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 16,
+      "Unit": "Unit2",
+      "Part": "Part2",
+      "Type": "MCQ",
+      "Question": "Fastest land animal?",
+      "Option1": "Lion",
+      "Option2": "Cheetah",
+      "Option3": "Tiger",
+      "Option4": "Horse",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+
+    // ================= Unit3 Part1 =================
+    {
+      "ID": 17,
+      "Unit": "Unit3",
+      "Part": "Part1",
+      "Type": "TF",
+      "Question": "Humans have 4 lungs.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 18,
+      "Unit": "Unit3",
+      "Part": "Part1",
+      "Type": "TF",
+      "Question": "Earth is the third planet from the Sun.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 19,
+      "Unit": "Unit3",
+      "Part": "Part1",
+      "Type": "MCQ",
+      "Question": "Which is the largest continent?",
+      "Option1": "Africa",
+      "Option2": "Asia",
+      "Option3": "Europe",
+      "Option4": "Antarctica",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 20,
+      "Unit": "Unit3",
+      "Part": "Part1",
+      "Type": "MCQ",
+      "Question": "Which is a mammal?",
+      "Option1": "Shark",
+      "Option2": "Dolphin",
+      "Option3": "Frog",
+      "Option4": "Lizard",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+
+    // ================= Unit3 Part2 =================
+    {
+      "ID": 21,
+      "Unit": "Unit3",
+      "Part": "Part2",
+      "Type": "TF",
+      "Question": "Penguins can fly.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 2,
+      "Score": 1
+    },
+    {
+      "ID": 22,
+      "Unit": "Unit3",
+      "Part": "Part2",
+      "Type": "TF",
+      "Question": "Lightning is hotter than the Sun.",
+      "Option1": "True",
+      "Option2": "False",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 23,
+      "Unit": "Unit3",
+      "Part": "Part2",
+      "Type": "MCQ",
+      "Question": "Which gas is essential for breathing?",
+      "Option1": "Oxygen",
+      "Option2": "Carbon Dioxide",
+      "Option3": "Nitrogen",
+      "Option4": "Hydrogen",
+      "CorrectAnswer": 1,
+      "Score": 1
+    },
+    {
+      "ID": 24,
+      "Unit": "Unit3",
+      "Part": "Part2",
+      "Type": "MCQ",
+      "Question": "Fastest aquatic animal?",
+      "Option1": "Dolphin",
+      "Option2": "Sailfish",
+      "Option3": "Shark",
+      "Option4": "Tuna",
+      "CorrectAnswer": 2,
+      "Score": 1
+    }
+  ]
+}

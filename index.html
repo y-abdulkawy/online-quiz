@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Online Quiz</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>.hidden{display:none;}</style>
+</head>
+<body class="bg-gray-100 p-6">
+<div id="app" class="max-w-3xl mx-auto bg-white rounded-2xl shadow p-6">
+<h1 class="text-2xl font-bold mb-4 text-center">🎓 Online Quiz</h1>
+
+<div id="step1">
+<h2 class="text-lg font-semibold mb-2">Choose Unit(s):</h2>
+<div id="units" class="space-y-2"></div>
+<button id="next1" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+</div>
+
+<div id="step2" class="hidden">
+<h2 class="text-lg font-semibold mb-2">Choose Part(s):</h2>
+<div id="parts" class="space-y-2"></div>
+<button id="next2" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+</div>
+
+<div id="step3" class="hidden">
+<h2 class="text-lg font-semibold mb-2">Choose Question Type:</h2>
+<div id="types" class="space-y-2"></div>
+<button id="next3" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+</div>
+
+<div id="step4" class="hidden">
+<h2 class="text-lg font-semibold mb-2">Select number of questions (max 30):</h2>
+<input type="number" id="numQuestions" min="1" max="30" value="10" class="border p-2 rounded w-32">
+<button id="startQuiz" class="ml-4 bg-green-600 text-white px-4 py-2 rounded">Start Quiz</button>
+</div>
+
+<div id="quiz" class="hidden">
+<div class="flex justify-between mb-4">
+<span id="timer" class="text-red-500 font-bold">60:00</span>
+<span id="progress"></span>
+</div>
+<div id="questionText" class="text-lg font-semibold mb-3"></div>
+<div id="options" class="space-y-2"></div>
+<div class="flex justify-between mt-4">
+<button id="prev" class="bg-gray-400 text-white px-4 py-2 rounded">Prev</button>
+<button id="next" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+<button id="submit" class="bg-green-600 text-white px-4 py-2 rounded">Submit</button>
+</div>
+</div>
+
+<div id="result" class="hidden text-center">
+<h2 class="text-xl font-bold mb-4">🎉 Your Score:</h2>
+<p id="scoreText" class="text-2xl text-blue-600"></p>
+</div>
+</div>
+
+<script>
+let allQuestions=[],selectedQuestions=[],current=0,answers={},timerInterval;
+
+async function loadQuestions(){
+const res=await fetch("questions.json");
+allQuestions=await res.json();
+const units=[...new Set(allQuestions.map(q=>q.Unit))];
+document.getElementById('units').innerHTML=units.map(u=>`<label><input type="checkbox" value="${u}"> ${u}</label>`).join("<br>");
+}
+loadQuestions();
+
+function showStep(n){
+for(let i=1;i<=6;i++)document.getElementById(`step${i}`)?.classList.add('hidden');
+document.getElementById('quiz')?.classList.add('hidden');
+document.getElementById('result')?.classList.add('hidden');
+document.getElementById(`step${n}`).classList.remove('hidden');
+}
+
+document.getElementById('next1').onclick=()=>{
+const units=Array.from(document.querySelectorAll('#units input:checked')).map(i=>i.value);
+if(!units.length)return alert('Select at least one Unit');
+const parts=[...new Set(allQuestions.filter(q=>units.includes(q.Unit)).map(q=>q.Part))];
+document.getElementById('parts').innerHTML=parts.map(p=>`<label><input type="checkbox" value="${p}"> ${p}</label>`).join("<br>");
+showStep(2);
+};
+
+document.getElementById('next2').onclick=()=>{
+const parts=Array.from(document.querySelectorAll('#parts input:checked')).map(i=>i.value);
+if(!parts.length)return alert('Select at least one Part');
+const types=[...new Set(allQuestions.filter(q=>parts.includes(q.Part)).map(q=>q.Type))];
+document.getElementById('types').innerHTML=types.map(t=>`<label><input type="checkbox" value="${t}"> ${t}</label>`).join("<br>");
+showStep(3);
+};
+
+document.getElementById('next3').onclick=()=>{
+const types=Array.from(document.querySelectorAll('#types input:checked')).map(i=>i.value);
+if(!types.length)return alert('Select at least one Type');
+showStep(4);
+};
+
+document.getElementById('startQuiz').onclick=()=>{
+const num=parseInt(document.getElementById('numQuestions').value);
+if(num<1||num>30)return alert('Enter a valid number 1-30');
+const units=Array.from(document.querySelectorAll('#units input:checked')).map(i=>i.value);
+const parts=Array.from(document.querySelectorAll('#parts input:checked')).map(i=>i.value);
+const types=Array.from(document.querySelectorAll('#types input:checked')).map(i=>i.value);
+let pool=allQuestions.filter(q=>units.includes(q.Unit)&&parts.includes(q.Part)&&types.includes(q.Type));
+pool=pool.sort(()=>Math.random()-0.5);
+selectedQuestions=pool.slice(0,num);
+current=0;answers={};
+showQuiz();
+showStep(5);
+startTimer(60*60);
+};
+
+function showQuiz(){
+document.getElementById('quiz').classList.remove('hidden');
+const q=selectedQuestions[current];
+document.getElementById('questionText').innerText=`Q${current+1}. ${q.Question}`;
+const opts=['Option1','Option2','Option3','Option4'].filter(o=>q[o]);
+document.getElementById('options').innerHTML=opts.map((o,i)=>`
+<label class="block border rounded p-2">
+<input type="radio" name="opt" value="${i+1}" ${answers[q.ID]==i+1?'checked':''}> ${q[o]}
+</label>`).join("");
+document.getElementById('progress').innerText=`${current+1}/${selectedQuestions.length}`;
+}
+
+document.getElementById('next').onclick=()=>{saveAnswer();if(current<selectedQuestions.length-1){current++;showQuiz();}};
+document.getElementById('prev').onclick=()=>{saveAnswer();if(current>0){current--;showQuiz();}};
+document.getElementById('submit').onclick=()=>{saveAnswer();endQuiz();};
+
+function saveAnswer(){
+const q=selectedQuestions[current];
+const ans=document.querySelector('input[name="opt"]:checked');
+if(ans)answers[q.ID]=parseInt(ans.value);
+}
+
+function startTimer(sec){
+let time=sec;
+timerInterval=setInterval(()=>{
+time--;
+const m=Math.floor(time/60).toString().padStart(2,'0');
+const s=(time%60).toString().padStart(2,'0');
+document.getElementById('timer').innerText=`${m}:${s}`;
+if(time<=0){clearInterval(timerInterval);endQuiz();}
+},1000);
+}
+
+function endQuiz(){
+clearInterval(timerInterval);
+let score=0;
+selectedQuestions.forEach(q=>{
+if(answers[q.ID]==q.CorrectAnswer)score+=q.Score;
+});
+showStep(6);
+document.getElementById('result').classList.remove('hidden');
+document.getElementById('scoreText').innerText=`${score} / ${selectedQuestions.reduce((a,b)=>a+b.Score,0)}`;
+}
+</script>
+</body>
+</html>
